@@ -29,3 +29,27 @@ class BinarySearch {
     }
 }
 ```
+
+## reference my teacher Recca Chao's solution
+
+[Recca Chao's kotlin kata binary search](https://gitpage.reccachao.net/kotlin/kata/binary-search/)
+
+```kotlin
+class BinarySearch {
+    fun search(nums: IntArray, target: Int): Int {
+        var left = 0
+        var right = nums.lastIndex
+        while(left <= right) {
+            val mid = (left + right) /2
+            when {
+                nums[mid] == target -> return mid
+                nums[mid] > target -> right = mid - 1
+                nums[mid] < target -> left = mid + 1
+            }
+        }
+        return -1
+    }
+}
+```
+
+透過 while 與 when 的語法, 讓整個語法結構更加清晰
