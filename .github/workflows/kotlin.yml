@@ -19,6 +19,12 @@ jobs:
           java-version: 11
       - name: Grant execution permission for gradlew
         run: chmod +x gradlew
+      - name: Cache Gradle packages
+        uses: actions/cache@v1
+        with:
+          path: ~/.gradle/caches
+          key: ${{ runner.os }}-gradle-${{ github.event.repository.name }}-${{ hashFiles('**/*.gradle')}}
+          restore-keys: ${{ runner.os }}-gradle-${{ github.event.repository.name }}
       - name: Build with Gradlew
         run: ./gradlew build
       - name: Test with Gradlew
